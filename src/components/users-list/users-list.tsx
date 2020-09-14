@@ -29,27 +29,21 @@ const UsersList = () => {
         </span>
       </StyledUsersListLegend>
       <StyledUsersList>
-        {users.map((user, userIndex) => {
-          if (userIndex < usersPerView) {
-            return (
-              <StyledUsersListItem key={userIndex}>
-                <div className="user-avatar">
-                  <User color="#248cd3" size="80" />
-                </div>
-                <div className="user-infos">
-                  <h2>{user.name}</h2>
-                  <h3>
-                    {user.age}
-                    {' '}
-                    ano(s)
-                  </h3>
-                </div>
-              </StyledUsersListItem>
-            );
-          } else {
-            return;
-          }
-        })}
+        {users.filter((user, userIndex) => userIndex < usersPerView).map((user, userIndex) => (
+          <StyledUsersListItem key={userIndex}>
+            <div className="user-avatar">
+              <User color="#248cd3" size="80" />
+            </div>
+            <div className="user-infos">
+              <h2>{user.name}</h2>
+              <h3>
+                {user.age}
+                {' '}
+                ano(s)
+              </h3>
+            </div>
+          </StyledUsersListItem>
+        ))}
 
         {users.length > 0 && (
           <StyledUsersListLoadMore

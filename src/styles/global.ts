@@ -20,15 +20,21 @@ export default createGlobalStyle`
     --bg-body: var(--primary-color);
   }
 
+  html, body {
+    height: 100%;
+  }
+
   html {
     font-size: 62.5%;
     height: -webkit-fill-available;
   }
 
   body {
-    min-height: 100vh;
     min-height: -webkit-fill-available;
     background: var(--bg-body);
+
+    display: flex;
+    flex-direction: column;
   }
 
   body,
@@ -42,6 +48,7 @@ export default createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1 0 auto;
   }
 
   h1, h2, h3 {
