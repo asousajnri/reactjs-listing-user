@@ -9,6 +9,8 @@ import { StyledHeader } from "./header-styles";
 
 const Header = () => {
   const { 
+    data,
+    users,
     setUsers, 
     setIsFiredSearch,  
   } = useViewContext();
@@ -21,8 +23,11 @@ const Header = () => {
       setIsFiredSearch(true);
       const query = inputRef.current.value;
 
+      if(users.length < data.length) setUsers(data);
+
       setUsers(prev => prev.filter(user => {
-        return user.name.includes(query) || String(user.age) === query;
+        return user.name.toLocaleLowerCase()
+        .includes(query.toLocaleLowerCase()) || String(user.age) === query;
       }))
     }
   };
