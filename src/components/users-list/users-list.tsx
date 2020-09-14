@@ -30,7 +30,8 @@ const UsersList = () => {
       </StyledUsersListLegend>
       <StyledUsersList>
         {users.map((user, userIndex) => {
-          if (userIndex < usersPerView) return (
+          if (userIndex < usersPerView) {
+            return (
               <StyledUsersListItem key={userIndex}>
                 <div className="user-avatar">
                   <User color="#248cd3" size="80" />
@@ -44,7 +45,10 @@ const UsersList = () => {
                   </h3>
                 </div>
               </StyledUsersListItem>
-          );
+            );
+          } else {
+            return;
+          }
         })}
 
         {users.length > 0 && (
